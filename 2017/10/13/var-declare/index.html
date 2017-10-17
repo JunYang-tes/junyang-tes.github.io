@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Qianba, NexT" />
+  <meta name="keywords" content="typescript, ts," />
 
 
 
@@ -94,13 +94,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blogs">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="变量声明let 和const是JavaScript中的两种声明方式。就像前文说过的那样，在某些方面let和var是相似的，但是使用let可以避免许多JavaScript程序员常常遇见的陷阱。const 是对let的增强，它可以防止对变量的从新赋值。 TypeScript是JavaScript的超集，所以let和const在TypeScript中自然可用。本文将会仔细介绍这两种声明方式，。。。 va">
+<meta name="keywords" content="typescript, ts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.变量声明">
+<meta property="og:url" content="http://yoursite.com/2017/10/13/var-declare/index.html">
 <meta property="og:site_name" content="Blogs">
+<meta property="og:description" content="变量声明let 和const是JavaScript中的两种声明方式。就像前文说过的那样，在某些方面let和var是相似的，但是使用let可以避免许多JavaScript程序员常常遇见的陷阱。const 是对let的增强，它可以防止对变量的从新赋值。 TypeScript是JavaScript的超集，所以let和const在TypeScript中自然可用。本文将会仔细介绍这两种声明方式，。。。 va">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-17T14:47:46.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blogs">
+<meta name="twitter:title" content="2.变量声明">
+<meta name="twitter:description" content="变量声明let 和const是JavaScript中的两种声明方式。就像前文说过的那样，在某些方面let和var是相似的，但是使用let可以避免许多JavaScript程序员常常遇见的陷阱。const 是对let的增强，它可以防止对变量的从新赋值。 TypeScript是JavaScript的超集，所以let和const在TypeScript中自然可用。本文将会仔细介绍这两种声明方式，。。。 va">
 
 
 
@@ -129,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/13/var-declare/"/>
 
 
 
 
 
-  <title>Blogs</title>
+  <title>2.变量声明 | Blogs</title>
   
 
 
@@ -160,9 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,9 +248,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -277,9 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/13/var-declare/" itemprop="url">2.变量声明</a></h1>
+          <h1 class="post-title" itemprop="name headline">2.变量声明</h1>
         
 
         <div class="post-meta">
@@ -373,9 +374,7 @@
       
 
       
-        
-          
-            <h1 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h1><p><code>let</code> 和<code>const</code>是JavaScript中的两种声明方式。就像前文说过的那样，在某些方面<code>let</code>和<code>var</code>是相似的，但是使用<code>let</code>可以避免许多JavaScript程序员常常遇见的陷阱。<code>const</code> 是对<code>let</code>的增强，它可以防止对变量的从新赋值。</p>
+        <h1 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h1><p><code>let</code> 和<code>const</code>是JavaScript中的两种声明方式。就像前文说过的那样，在某些方面<code>let</code>和<code>var</code>是相似的，但是使用<code>let</code>可以避免许多JavaScript程序员常常遇见的陷阱。<code>const</code> 是对<code>let</code>的增强，它可以防止对变量的从新赋值。</p>
 <p>TypeScript是JavaScript的超集，所以<code>let</code>和<code>const</code>在TypeScript中自然可用。本文将会仔细介绍这两种声明方式，。。。</p>
 <h1 id="var-声明方式"><a href="#var-声明方式" class="headerlink" title="var 声明方式"></a>var 声明方式</h1><p>在JavaScript中一直(注：ES6之前)使用var关键字来声明变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var a=10;</div></pre></td></tr></table></figure></p>
 <p>就如你所想，这里声明了一个叫<code>a</code>的变量，并且赋值10给它。<br>我们也可以在函数中声明一个变量：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> message = <span class="string">"Hello, world!"</span>;</div><div class="line">    <span class="keyword">return</span> message;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -453,8 +452,6 @@
 <p>对象延展还有一些限制，结果只会包含对象<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties" target="_blank" rel="external">自身的、可枚举的属性</a>(注：自身的表示非原型链上的属性)<br>所以，当你延展一个对象时，将丢失其上的方法。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> C &#123;</div><div class="line">  p = <span class="number">12</span>;</div><div class="line">  m() &#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> C();</div><div class="line"><span class="keyword">let</span> clone = &#123; ...c &#125;;</div><div class="line">clone.p; <span class="comment">// ok</span></div><div class="line">clone.m(); <span class="comment">// error!</span></div></pre></td></tr></table></figure></p>
 <p>此外，Typescript编译器不允许泛型函数的类型参数。这一特型在将来的版本中可能会受支持。</p>
 
-          
-        
       
     </div>
     
@@ -469,209 +466,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/10/bacis-types/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qianba">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/bacis-types/" itemprop="url">1.基本类型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T17:32:03+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/翻译/" itemprop="url" rel="index">
-                    <span itemprop="name">翻译</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/翻译/编程语言/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/翻译/编程语言/TypeScript/" itemprop="url" rel="index">
-                    <span itemprop="name">TypeScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/typescript-ts/" rel="tag"># typescript, ts</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h1><p>最基本的数据类型为简单的true/false值，在TypeScript中被称为<code>boolean</code> 值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let isDone:boolean = false;</div></pre></td></tr></table></figure></p>
-<h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h1><p>和JavaScript 一样，所有数字都是浮点数，即<code>number</code>类型<br>除了十六进制和十进制字面量，TypeScript也支持ECMAScript 2015引入的二进制和八进制字面量</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> decimal: <span class="built_in">number</span> = <span class="number">6</span>;</div><div class="line"><span class="keyword">let</span> hex: <span class="built_in">number</span> = <span class="number">0xf00d</span>;</div><div class="line"><span class="keyword">let</span> binary: <span class="built_in">number</span> = <span class="number">0b1010</span>;</div><div class="line"><span class="keyword">let</span> octal: <span class="built_in">number</span> = <span class="number">0o744</span>;</div></pre></td></tr></table></figure>
-<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><p>在JavaScript中，编写程序的一项基本工作是对文本数据的处理。和其它的语言一样，我们使用<code>string</code>来表示这些文本数据类型。和JavaScript一样，TypeScript也使用双引号和单引号来表示字符串数据。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> color: <span class="built_in">string</span> = <span class="string">"blue"</span>;</div><div class="line">color = <span class="string">'red'</span>;</div></pre></td></tr></table></figure></p>
-<p>你也可以使用<code>模版字符串</code>,在模版字符串中可以嵌入表达式，同时，模版串内可以换行。模版串用反引号来表示，其内嵌的表达式形如<code>${ expression }</code></p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fullName: <span class="built_in">string</span> = <span class="string">`Bob Bobbington`</span>;</div><div class="line"><span class="keyword">let</span> age: <span class="built_in">number</span> = <span class="number">37</span>;</div><div class="line"><span class="keyword">let</span> sentence: <span class="built_in">string</span> = <span class="string">`Hello, my name is <span class="subst">$&#123; fullName &#125;</span>.</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">I'll be <span class="subst">$&#123; age + 1 &#125;</span> years old next month.`</span>;</div></pre></td></tr></table></figure>
-<p>这和按如下方式定义<code>sentence</code> 等价：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> sentence: <span class="built_in">string</span> = <span class="string">"Hello, my name is "</span> + fullName + <span class="string">".\n\n"</span> +</div><div class="line">    <span class="string">"I'll be "</span> + (age + <span class="number">1</span>) + <span class="string">" years old next month."</span>;</div></pre></td></tr></table></figure></p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>和JavaScript一样，TypeScript允许你使用数组。数组的类型可有两种写法。<br>第一种是在元素类型的后面跟上一对方括号：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> list:<span class="built_in">number</span>[] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div></pre></td></tr></table></figure></p>
-<p>第二种是使用泛型数组参数:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> list:<span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div></pre></td></tr></table></figure></p>
-<h1 id="元组-Tuple"><a href="#元组-Tuple" class="headerlink" title="元组(Tuple)"></a>元组(Tuple)</h1><p>一个数组元素个数固定且类型已知，用元组来表示。例如，你可能需要表示一个<code>string</code>和一个<code>number</code>构成的二元组<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Declare a tuple type</span></div><div class="line"><span class="keyword">let</span> x: [<span class="built_in">string</span>, <span class="built_in">number</span>];</div><div class="line"><span class="comment">// Initialize it</span></div><div class="line">x = [<span class="string">"hello"</span>, <span class="number">10</span>]; <span class="comment">// OK</span></div><div class="line"><span class="comment">// Initialize it incorrectly</span></div><div class="line">x = [<span class="number">10</span>, <span class="string">"hello"</span>]; <span class="comment">// Error</span></div></pre></td></tr></table></figure></p>
-<p>当我们访问一个索引已知的元组元素，那么这个元素的类型也就是已知的了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(x[0].substr(1)); // OK</div><div class="line">console.log(x[1].substr(1)); // Error, &apos;number&apos; does not have &apos;substr&apos; typescript 知道x[1]是一个number类型的东西</div></pre></td></tr></table></figure></p>
-<p>当访问元组索引范围外的元素的时候，TypeScript会将其视为该元组已知类型的<code>并类型(Union types)</code>.<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">x[<span class="number">3</span>] = <span class="string">"world"</span>; <span class="comment">// OK, 'string' can be assigned to 'string | number'</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(x[<span class="number">5</span>].toString()); <span class="comment">// OK, 'string' and 'number' both have 'toString'</span></div><div class="line"></div><div class="line">x[<span class="number">6</span>] = <span class="literal">true</span>; <span class="comment">// Error, 'boolean' isn't 'string | number'</span></div></pre></td></tr></table></figure></p>
-<p>并类型是一个高级话题，将在后文讨论。</p>
-<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><p>除了JavaScript的数据类型，TypeScript还增加了一种有用的类型——枚举(enum). 和C#一样，枚举是给一组数字取一个友好的名字的方式。（注: typescript 2.4 中枚举也可以是字符串)<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> Color &#123;Red, Green, Blue&#125;</div><div class="line"><span class="keyword">let</span> c: Color = Color.Green;</div></pre></td></tr></table></figure></p>
-<p>默认情况下，枚举值从0开始(后续加1)。你可以手动为枚举的某个成员设置一个值来改变其默认的值。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> Color &#123;Red = <span class="number">1</span>, Green, Blue&#125; </div><div class="line"><span class="keyword">let</span> c: Color = Color.Green; <span class="comment">// 2</span></div></pre></td></tr></table></figure></p>
-<p>或者，可以为枚举的每个成员设置值。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> Color &#123;Red = <span class="number">1</span>, Green = <span class="number">2</span>, Blue = <span class="number">4</span>&#125;</div><div class="line"><span class="keyword">let</span> c: Color = Color.Green;</div></pre></td></tr></table></figure></p>
-<p>一个方便的特性是你根据枚举值得到其对应的名字.<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> Color &#123;Red = <span class="number">1</span>, Green, Blue&#125;</div><div class="line"><span class="keyword">let</span> colorName: <span class="built_in">string</span> = Color[<span class="number">2</span>];</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(colorName); <span class="comment">// Green</span></div></pre></td></tr></table></figure></p>
-<h1 id="Any-类型"><a href="#Any-类型" class="headerlink" title="Any 类型"></a>Any 类型</h1><p>我们也许需要描述这样一种变量——我们在写程序的时候并不知道其类型，这些变量值可能来自一些动态的内容，例如——第三方库。这种情况，我们想对这些变量停用类型检察以便通过编译。为了做到这点，我们使用<code>any</code> 类型<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> notSure: <span class="built_in">any</span> = <span class="number">4</span>;</div><div class="line">notSure = <span class="string">"maybe a string instead"</span>;</div><div class="line">notSure = <span class="literal">false</span>; <span class="comment">// okay, definitely a boolean</span></div></pre></td></tr></table></figure></p>
-<p>any 类型是和JavaScript库交互的有效方式，这可让你逐渐的启用或停用类型检察。你也许希望<code>Object</code>类现会扮演同样的角色，在其它某些语言中的却如此。但在typescript中，Object类型的变量只允许你将any类型的变量赋值给它，而不能调用上面的任意方法，那怕是的确存在的方法。</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> notSure: <span class="built_in">any</span> = <span class="number">4</span>;</div><div class="line">notSure.ifItExists(); <span class="comment">// okay, ifItExists might exist at runtime</span></div><div class="line">notSure.toFixed(); <span class="comment">// okay, toFixed exists (but the compiler doesn't check)</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> prettySure: <span class="built_in">Object</span> = <span class="number">4</span>;</div><div class="line">prettySure.toFixed(); <span class="comment">// Error: Property 'toFixed' doesn't exist on type 'Object'.</span></div></pre></td></tr></table></figure>
-<h1 id="Void-类型"><a href="#Void-类型" class="headerlink" title="Void 类型"></a>Void 类型</h1><p>void有些像是和any相反，它表示——没有类型。你可能常在函数的返回值类型声明的地方见到该类型。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">warnUser</span>(<span class="params"></span>): <span class="title">void</span> </span>&#123;</div><div class="line">    alert(<span class="string">"This is my warning message"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>用void来声明变量就没什么意义了，因为你只能给它赋<code>undefined</code>或<code>null</code>给它。</p>
-<h1 id="Null-和-Undefined"><a href="#Null-和-Undefined" class="headerlink" title="Null 和 Undefined"></a>Null 和 Undefined</h1><p>默认情况下，null和undefined 是所有其它类型的子类型，所以null和undefined可以赋值给任何变量。<br>但当<code>--strictNullChecks</code>选项启用后，null和undefined就只能够赋值给<code>void</code>或其对应的类型（注：null，undefined 即是类型，也是值）。这有助于避免多数常见错误。<br>当你希望传递string或null或undefined的类型的值的时候则需要使用并类型 <code>string | null | undefined</code>。</p>
-<blockquote>
-<p>推荐使用<code>--strictNullChecks</code>,但该教程徦设该选项是关闭了的。</p>
-</blockquote>
-<h1 id="Never-类型"><a href="#Never-类型" class="headerlink" title="Never 类型"></a>Never 类型</h1><p>never 类型代表了“<code>永远不会出现</code>”的类型，<code>never</code> 是那些总是抛出错误或永不返回的函数的“返回类型”()。<br>(Variables also acquire the type never when narrowed by any type guards that can never be true. ???)<br>never 类型也是所有类型的子类型，同时，没有类型是never类型的子类型，所以除了never自己，没有类型可以赋值给never。 any也不可以赋值给never。<br>函数返回类型为<code>never</code>的例子：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Function returning never must have unreachable end point</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">never</span> </span>&#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Inferred return type is never</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fail</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> error(<span class="string">"Something failed"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Function returning never must have unreachable end point</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">infiniteLoop</span>(<span class="params"></span>): <span class="title">never</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h1 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h1><p>有时候你会遇到这样的情况：你比TypeScript更清楚一个值是什么类型的。<br>类型断言是一种指定类型的方法，相当于告诉编译器：“相信我，我知道为在做什么”。类型断言和其它语言中的类型转换(type cast)是类似的，但不会执行特别的检察或数据重构操作。也没有运行时的开销，只是纯粹的为编译器使用而矣。TypeScript徦设你已经做过必要的检察了。<br>类型断言有两种形式，一种是<code>尖括号</code>语法:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> someValue: <span class="built_in">any</span> = <span class="string">"this is a string"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> strLength: <span class="built_in">number</span> = (&lt;<span class="built_in">string</span>&gt;someValue).length;</div></pre></td></tr></table></figure></p>
-<p>另一种是<code>as</code>语法：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">let</span> someValue: <span class="built_in">any</span> = <span class="string">"this is a string"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> strLength: <span class="built_in">number</span> = (someValue <span class="keyword">as</span> <span class="built_in">string</span>).length;</div></pre></td></tr></table></figure></p>
-<p>这两种方式是等价的，使用哪种取决于你的偏好。但是，如果在TypeScript中使用JSX, 则只有<code>as</code>方式是可用的（注：JSX 用尖括号了表示组件，这会引入二意性）。</p>
-<h1 id="关于-let"><a href="#关于-let" class="headerlink" title="关于 let"></a>关于 <code>let</code></h1><p>你可能注意到了，我们使用<code>let</code>关键字代替了JavaScript中的<code>var</code>关键字。let 实际上是JavaScript 新标准的东西，TypeScript使其提前可用了。后面我们会进一步讨论let，let可以缓解JavaScript中的很多问题，所以，尽可能使用let来代替var吧！</p>
-<h1 id="进一步阅读"><a href="#进一步阅读" class="headerlink" title="进一步阅读"></a>进一步阅读</h1><p><a href="https://stackoverflow.com/questions/37910669/what-is-the-difference-between-never-and-void-in-typescript" target="_blank" rel="external">never 和 void 的区别</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/10/bacis-types/" rel="next" title="1.基本类型">
+                <i class="fa fa-chevron-left"></i> 1.基本类型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -681,10 +505,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -692,6 +517,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -712,8 +541,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -775,6 +613,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量声明"><span class="nav-number">1.</span> <span class="nav-text">变量声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#var-声明方式"><span class="nav-number">2.</span> <span class="nav-text">var 声明方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#作用域规则"><span class="nav-number">3.</span> <span class="nav-text">作用域规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量捕获的怪异行为"><span class="nav-number">4.</span> <span class="nav-text">变量捕获的怪异行为</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let-方式声明"><span class="nav-number">5.</span> <span class="nav-text">let 方式声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#块作用域"><span class="nav-number">6.</span> <span class="nav-text">块作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重声明以及覆盖"><span class="nav-number">7.</span> <span class="nav-text">重声明以及覆盖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#块作用域变量捕获"><span class="nav-number">8.</span> <span class="nav-text">块作用域变量捕获</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const-声明"><span class="nav-number">9.</span> <span class="nav-text">const 声明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let-vs-const"><span class="nav-number">10.</span> <span class="nav-text">let vs. const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解构"><span class="nav-number">11.</span> <span class="nav-text">解构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组解构"><span class="nav-number">11.1.</span> <span class="nav-text">数组解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象解构"><span class="nav-number">11.2.</span> <span class="nav-text">对象解构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性重命名"><span class="nav-number">11.2.1.</span> <span class="nav-text">属性重命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认值"><span class="nav-number">11.2.2.</span> <span class="nav-text">默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数声明"><span class="nav-number">11.2.3.</span> <span class="nav-text">函数声明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延展"><span class="nav-number">11.3.</span> <span class="nav-text">延展</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -888,10 +742,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
