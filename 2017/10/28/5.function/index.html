@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Qianba, NexT" />
+  <meta name="keywords" content="typescript, ts," />
 
 
 
@@ -95,15 +95,16 @@
 
 
 <meta name="description" content="简介函数是任何一个JavaScript程序中的基本构建单位。用它们你可以构建抽象层、模拟类、隐藏信息和模块化。在TypeScript中，尽管本来就有类、名字空间和模块这些东西，函数依然伴演了描述如何做某些事的关键角色。TypeScript也在标准的JavaScript函数上添加了一些东西来使它们更易于使用。 函数和JavaScript一样，TypeScript可创建命名的函数和匿名的函数。这允许你">
+<meta name="keywords" content="typescript, ts">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blogs">
+<meta property="og:title" content="5.函数">
 <meta property="og:url" content="http://yoursite.com/2017/10/28/5.function/index.html">
 <meta property="og:site_name" content="Blogs">
 <meta property="og:description" content="简介函数是任何一个JavaScript程序中的基本构建单位。用它们你可以构建抽象层、模拟类、隐藏信息和模块化。在TypeScript中，尽管本来就有类、名字空间和模块这些东西，函数依然伴演了描述如何做某些事的关键角色。TypeScript也在标准的JavaScript函数上添加了一些东西来使它们更易于使用。 函数和JavaScript一样，TypeScript可创建命名的函数和匿名的函数。这允许你">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-28T13:07:35.415Z">
+<meta property="og:updated_time" content="2017-11-12T15:13:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blogs">
+<meta name="twitter:title" content="5.函数">
 <meta name="twitter:description" content="简介函数是任何一个JavaScript程序中的基本构建单位。用它们你可以构建抽象层、模拟类、隐藏信息和模块化。在TypeScript中，尽管本来就有类、名字空间和模块这些东西，函数依然伴演了描述如何做某些事的关键角色。TypeScript也在标准的JavaScript函数上添加了一些东西来使它们更易于使用。 函数和JavaScript一样，TypeScript可创建命名的函数和匿名的函数。这允许你">
 
 
@@ -139,7 +140,7 @@
 
 
 
-  <title> | Blogs</title>
+  <title>5.函数 | Blogs</title>
   
 
 
@@ -279,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">5.函数</h1>
         
 
         <div class="post-meta">
@@ -291,7 +292,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-28T21:07:35+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-28T00:00:00+08:00">
                 2017-10-28
               </time>
             
@@ -301,6 +302,50 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/编程语言/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/编程语言/TypeScript/" itemprop="url" rel="index">
+                    <span itemprop="name">TypeScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -343,19 +388,27 @@
 <p>在JavaScript中，每个参数都是可选的，用户可能会省略其中的一些参数，如果参数被省略了那么该参数就是<code>undefined</code>。在TypeScript中可以通过在参数名末尾添加<code>?</code>来使用这一功能。比如，如果第二个参数是可选的:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, lastName?: <span class="built_in">string</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (lastName)</div><div class="line">        <span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> firstName;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> result1 = buildName(<span class="string">"Bob"</span>);                  <span class="comment">// works correctly now</span></div><div class="line"><span class="keyword">let</span> result2 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>, <span class="string">"Sr."</span>);  <span class="comment">// error, too many parameters</span></div><div class="line"><span class="keyword">let</span> result3 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>);         <span class="comment">// ah, just right</span></div></pre></td></tr></table></figure></p>
 <p>可选参数必须要在必选参数后面声明。<br>在TypeScript中，我们也可以参数设置一个预设值，如果调用者没有提拱该参数(或提拱了一个<code>undefined</code>)，那么该参数的值就是预设值。这被叫做<code>默认参数</code>.<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function buildName(firstName: string, lastName = "Smith") &#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> result1 = buildName(<span class="string">"Bob"</span>);                  <span class="comment">// works correctly now, returns "Bob Smith"</span></div><div class="line"><span class="keyword">let</span> result2 = buildName(<span class="string">"Bob"</span>, <span class="literal">undefined</span>);       <span class="comment">// still works, also returns "Bob Smith"</span></div><div class="line"><span class="keyword">let</span> result3 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>, <span class="string">"Sr."</span>);  <span class="comment">// error, too many parameters</span></div><div class="line"><span class="keyword">let</span> result4 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>);         <span class="comment">// ah, just right</span></div></pre></td></tr></table></figure></p>
 <p>默认参数被视作是可选参数，和可选参数一样，我们可以在调用函数的时候忽略它们。可选参数和默认参数的类型(注:指的是函数的类型)是共用的。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, lastName?: <span class="built_in">string</span></span>) </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>和<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function buildName(firstName: string, lastName = "Smith") &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>和</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function buildName(firstName: string, lastName = "Smith") &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>的类型都是<code>(firstName:string,lastName?:string)=&gt;string</code>. <code>lastName</code>的默认在在类中是没有体现的，只留下该参数是可选的这一事实。<br>和原生可选参数不同，默认参数不需要声明在必须参数后面。<!--此时类型是什么样的?--> 。如果一个默认参数只必选参数之前，那我们需要明确的传递一个<code>undefined</code>给它。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function buildName(firstName = "Will", lastName: string) &#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> result1 = buildName(<span class="string">"Bob"</span>);                  <span class="comment">// error, too few parameters</span></div><div class="line"><span class="keyword">let</span> result2 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>, <span class="string">"Sr."</span>);  <span class="comment">// error, too many parameters</span></div><div class="line"><span class="keyword">let</span> result3 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>);         <span class="comment">// okay and returns "Bob Adams"</span></div><div class="line"><span class="keyword">let</span> result4 = buildName(<span class="literal">undefined</span>, <span class="string">"Adams"</span>);     <span class="comment">// okay and returns "Will Adams"</span></div></pre></td></tr></table></figure></p>
 <h2 id="Rest-参数"><a href="#Rest-参数" class="headerlink" title="Rest 参数"></a>Rest 参数</h2><p>必选，可选，默认参数有一个共同点:它们谈及的都是一个参数的情况。有时候你可能会想把多个参数”打包起来”，或者你压根就不知道函数实际上会接受到多少个参数。在JavaScript中，你可以使用<code>arguments</code>(注:JavaScript的魔术变量)来处理这种情况。<br>在TypeScript中，你可以把所有的参数收集到同一个变量中:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, ...restOfName: <span class="built_in">string</span>[]</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + restOfName.join(<span class="string">" "</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> employeeName = buildName(<span class="string">"Joseph"</span>, <span class="string">"Samuel"</span>, <span class="string">"Lucas"</span>, <span class="string">"MacKinzie"</span>);</div></pre></td></tr></table></figure></p>
-<p>(注:ES6也有这种语法)<br>Rest参数被视为一组可选参数，你可以传递任意多的参数都Rest参数。编译器会创建一个参数数组，其名嘴在<code>...</code>后指定。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, ...restOfName: <span class="built_in">string</span>[]</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + restOfName.join(<span class="string">" "</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> buildNameFun: <span class="function">(<span class="params">fname: <span class="built_in">string</span>, ...rest: <span class="built_in">string</span>[]</span>) =&gt;</span> <span class="built_in">string</span> = buildName;</div></pre></td></tr></table></figure></p>
+<p>(注:ES6也有这种语法)<br>Rest参数被视为一组可选参数，你可以传递任意多的参数都Rest参数。编译器会创建一个参数数组，其名字在<code>...</code>后指定。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, ...restOfName: <span class="built_in">string</span>[]</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + restOfName.join(<span class="string">" "</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> buildNameFun: <span class="function">(<span class="params">fname: <span class="built_in">string</span>, ...rest: <span class="built_in">string</span>[]</span>) =&gt;</span> <span class="built_in">string</span> = buildName;</div></pre></td></tr></table></figure></p>
 <h1 id="this"><a href="#this" class="headerlink" title="this"></a>this</h1><!--a rite of passage,必由之路-->
 <p>学习如何使用<code>this</code>是学习JavaScript中的一条必经之路。TypeScript是JavaScript的超集，所以TypeScript的程序员也需要学习如何使用<code>this</code>以及指出什么时候this被错误的使用了。<br>幸运的是，TypeScript使用了一些技术来捕获<code>this</code>不正确的使用。如果你需要学习在JavaScript中如何使用<code>this</code>,请先阅读<a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/" target="_blank" rel="external">《理解JavaScript函数和this》</a>，该文介绍了<code>this</code>内部的东西，我们这里只介绍一些基础。</p>
-<h2 id="this-和箭头函数"><a href="#this-和箭头函数" class="headerlink" title="this 和箭头函数"></a>this 和箭头函数</h2><p>在JavaScript中，当函数被调用的时候其中的<code>this</code>是可用的。在是一个强大的、灵活的特性，但其代价是总是需要知道函数正在执行的上下文是什么。这是十分具有迷惑性的，特别是在返回一个函数或以一个函数为参数的时候。<br>例如:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> deck = &#123;</div><div class="line">    suits: [<span class="string">"hearts"</span>, <span class="string">"spades"</span>, <span class="string">"clubs"</span>, <span class="string">"diamonds"</span>],</div><div class="line">    cards: <span class="built_in">Array</span>(<span class="number">52</span>),</div><div class="line">    createCardPicker: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">let</span> pickedCard = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">52</span>);</div><div class="line">            <span class="keyword">let</span> pickedSuit = <span class="built_in">Math</span>.floor(pickedCard / <span class="number">13</span>);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> &#123;<span class="attr">suit</span>: <span class="keyword">this</span>.suits[pickedSuit], <span class="attr">card</span>: pickedCard % <span class="number">13</span>&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cardPicker = deck.createCardPicker();</div><div class="line"><span class="keyword">let</span> pickedCard = cardPicker();</div><div class="line"></div><div class="line">alert(<span class="string">"card: "</span> + pickedCard.card + <span class="string">" of "</span> + pickedCard.suit);</div></pre></td></tr></table></figure></p>
+<h2 id="this-和箭头函数"><a href="#this-和箭头函数" class="headerlink" title="this 和箭头函数"></a>this 和箭头函数</h2><p>在JavaScript中，当函数被调用的时候其中的<code>this</code>是可用的。这是一个强大的、灵活的特性，但其代价是总是需要知道函数正在执行的上下文是什么。这是十分具有迷惑性的，特别是在返回一个函数或以一个函数为参数的时候。<br>例如:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> deck = &#123;</div><div class="line">    suits: [<span class="string">"hearts"</span>, <span class="string">"spades"</span>, <span class="string">"clubs"</span>, <span class="string">"diamonds"</span>],</div><div class="line">    cards: <span class="built_in">Array</span>(<span class="number">52</span>),</div><div class="line">    createCardPicker: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">let</span> pickedCard = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">52</span>);</div><div class="line">            <span class="keyword">let</span> pickedSuit = <span class="built_in">Math</span>.floor(pickedCard / <span class="number">13</span>);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> &#123;<span class="attr">suit</span>: <span class="keyword">this</span>.suits[pickedSuit], <span class="attr">card</span>: pickedCard % <span class="number">13</span>&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cardPicker = deck.createCardPicker();</div><div class="line"><span class="keyword">let</span> pickedCard = cardPicker();</div><div class="line"></div><div class="line">alert(<span class="string">"card: "</span> + pickedCard.card + <span class="string">" of "</span> + pickedCard.suit);</div></pre></td></tr></table></figure></p>
 <p>注意，<code>createCardPicker</code>将返回一个函数。如果我们运行这个例子，我们会得到一个错误，而不是期望中的警告框。这是因为，createCardPicker返回的函数中的<code>this</code>是<code>window</code>而非<code>deck</code>对象。这是因为我们以<code>顶层非方法的语法</code>的方式在调用<code>cardPicker</code>(原注:在严格模式下，this会是undefined)。<br>我们可以通过确保function 绑定到正确的<code>this</code>的方式修正这个问题。这种情况下，无论这个函数多晚被调用，它总可以访问到deck对象。为了做到这点，我们可使用ES6的箭头函数，箭头函数会在函数被创建的时候捕获<code>this</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> deck = &#123;</div><div class="line">    suits: [<span class="string">"hearts"</span>, <span class="string">"spades"</span>, <span class="string">"clubs"</span>, <span class="string">"diamonds"</span>],</div><div class="line">    cards: <span class="built_in">Array</span>(<span class="number">52</span>),</div><div class="line">    createCardPicker: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> the line below is now an arrow function, allowing us to capture 'this' right here</span></div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> pickedCard = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">52</span>);</div><div class="line">            <span class="keyword">let</span> pickedSuit = <span class="built_in">Math</span>.floor(pickedCard / <span class="number">13</span>);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> &#123;<span class="attr">suit</span>: <span class="keyword">this</span>.suits[pickedSuit], <span class="attr">card</span>: pickedCard % <span class="number">13</span>&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cardPicker = deck.createCardPicker();</div><div class="line"><span class="keyword">let</span> pickedCard = cardPicker();</div><div class="line"></div><div class="line">alert(<span class="string">"card: "</span> + pickedCard.card + <span class="string">" of "</span> + pickedCard.suit);</div></pre></td></tr></table></figure></p>
 <p>更进一步，如果你使用了<code>--noImplicitThis</code>选项，TypeScript会在你错误的使用this的时候给出一个警告。它会指出<code>this.suits[pickedSuit]</code>中的<code>this</code>是<code>any</code>类型的。</p>
 <h2 id="this-参数"><a href="#this-参数" class="headerlink" title="this 参数"></a>this 参数</h2><p>不幸的是，<code>this.suits[pickedSuit]</code>的类型还是是<code>any</code>。这是因为<code>this</code>是来自于函数表达式中的对象字面量。你可以通过明确的指定一个<code>this</code>参数来修正这个问题。<code>this</code>参数是位于参数表中第一个参数的假参数。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"><span class="keyword">this</span>: <span class="built_in">void</span></span>) </span>&#123;</div><div class="line">    <span class="comment">// make sure `this` is unusable in this standalone function</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>现在添加两个接口来使类型更加清晰和更易复用:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> Card &#123;</div><div class="line">    suit: <span class="built_in">string</span>;</div><div class="line">    card: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">interface</span> Deck &#123;</div><div class="line">    suits: <span class="built_in">string</span>[];</div><div class="line">    cards: <span class="built_in">number</span>[];</div><div class="line">    createCardPicker(<span class="keyword">this</span>: Deck): <span class="function"><span class="params">()</span> =&gt;</span> Card;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> deck: Deck = &#123;</div><div class="line">    suits: [<span class="string">"hearts"</span>, <span class="string">"spades"</span>, <span class="string">"clubs"</span>, <span class="string">"diamonds"</span>],</div><div class="line">    cards: <span class="built_in">Array</span>(<span class="number">52</span>),</div><div class="line">    <span class="comment">// <span class="doctag">NOTE:</span> The function now explicitly specifies that its callee must be of type Deck</span></div><div class="line">    createCardPicker: <span class="function"><span class="keyword">function</span>(<span class="params"><span class="keyword">this</span>: Deck</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> pickedCard = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">52</span>);</div><div class="line">            <span class="keyword">let</span> pickedSuit = <span class="built_in">Math</span>.floor(pickedCard / <span class="number">13</span>);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> &#123;suit: <span class="keyword">this</span>.suits[pickedSuit], card: pickedCard % <span class="number">13</span>&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cardPicker = deck.createCardPicker();</div><div class="line"><span class="keyword">let</span> pickedCard = cardPicker();</div><div class="line"></div><div class="line">alert(<span class="string">"card: "</span> + pickedCard.card + <span class="string">" of "</span> + pickedCard.suit);</div></pre></td></tr></table></figure></p>
 <p>现在TypeScript知道<code>createCardPicker</code>需要在<code>Deck</code>对象上被调用，这表明<code>this</code>的<code>Deck</code>类型的而不是<code>any</code>，所以<code>--noImplicitThis</code>不会导致问题。</p>
-<h2 id="回调中的this参数。"><a href="#回调中的this参数。" class="headerlink" title="回调中的this参数。"></a>回调中的<code>this</code>参数。</h2><p>当你传递一个函数到一个库中，你也会在回调中遇到<code>this</code>的问题。因为这些库会将你的回调作为一个普通函数来调用，<code>this</code>就会是<code>undefined</code></p>
+<h2 id="回调中的this参数。"><a href="#回调中的this参数。" class="headerlink" title="回调中的this参数。"></a>回调中的<code>this</code>参数。</h2><!--
+You can also run into errors with this in callbacks, when you pass functions to a library that will later call them. Because the library that calls your callback will call it like a normal function, this will be undefined. With some work you can use this parameters to prevent errors with callbacks too. First, the library author needs to annotate the callback type with this:
+-->
+<p>当你传递一个函数到一个库中，你也会在回调中遇到<code>this</code>的问题。因为这些库会将你的回调作为一个普通函数来调用，<code>this</code>就会是<code>undefined</code>. 你可用<code>this</code>参数来防止一些错误。首先，库的作者需要这样表示回调:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> UIElement &#123;</div><div class="line">    addClickListener(onclick: <span class="function">(<span class="params"><span class="keyword">this</span>: <span class="built_in">void</span>, e: Event</span>) =&gt;</span> <span class="built_in">void</span>): <span class="built_in">void</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>this: void means that addClickListener expects onclick to be a function that does not require a this type. Second, annotate your calling code with this:</p>
+<p>class Handler {<br>    info: string;<br>    onClickBad(this: Handler, e: Event) {<br>        // oops, used this here. using this callback would crash at runtime<br>        this.info = e.message;<br>    }<br>}<br>let h = new Handler();<br>uiElement.addClickListener(h.onClickBad); // error!<br>With this annotated, you make it explicit that onClickBad must be called on an instance of Handler. Then TypeScript will detect that addClickListener requires a function that has this: void. To fix the error, change the type of this:</p>
+<p>class Handler {<br>    info: string;<br>    onClickGood(this: void, e: Event) {<br>        // can’t use this here because it’s of type void!<br>        console.log(‘clicked!’);<br>    }<br>}<br>let h = new Handler();<br>uiElement.addClickListener(h.onClickGood);<br>Because onClickGood specifies its this type as void, it is legal to pass to addClickListener. Of course, this also means that it can’t use this.info. If you want both then you’ll have to use an arrow function:</p>
+<p>class Handler {<br>    info: string;<br>    onClickGood = (e: Event) =&gt; { this.info = e.message }<br>}<br>This works because arrow functions don’t capture this, so you can always pass them to something that expects this: void. The downside is that one arrow function is created per object of type Handler. Methods, on the other hand, are only created once and attached to Handler’s prototype. They are shared between all objects of type Handler.</p>
 <h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><!--JavaScript is inherently a very dynamic language. It’s not uncommon for a single JavaScript function to return different types of objects based on the shape of the arguments passed in.
 -->
 <p>JavaScript是一种非常“动态”的语言。JavaScript中函数根据传入的参数返回不同的对象是很常见的。</p>
@@ -372,9 +425,11 @@ With this change, the overloads now give us type-checked calls to the pickCard f
 -->
 <p>现在这些重载信息可用于<code>pickCard</code>调用的时候做类型检察。<br><!--
 In order for the compiler to pick the correct typecheck, it follows a similar process to the underlying JavaScript. It looks at the overload list, and proceeding with the first overload attempts to call the function with the provided parameters. If it finds a match, it picks this overload as the correct overload. For this reason, its customary to order overloads from most specific to least specific.
---><br><!--
+--></p>
+<!--
 Note that the function pickCard(x): any piece is not part of the overload list, so it only has two overloads: one that takes an object and one that takes a number. Calling pickCard with any other parameter types would cause an error.
---><br>注意<code>pickCard</code>函数只有两个重载，一个是以对象为参数的另一个是以数字为参数的。以其它类型的参数来调用将得到一个编译时错误。</p>
+-->
+<p>注意<code>pickCard</code>函数只有两个重载，一个是以对象为参数的另一个是以数字为参数的。以其它类型的参数来调用将得到一个编译时错误。</p>
 
       
     </div>
@@ -389,6 +444,12 @@ Note that the function pickCard(x): any piece is not part of the overload list, 
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/typescript-ts/" rel="tag"># typescript, ts</a>
+          
+        </div>
       
 
       
@@ -408,6 +469,10 @@ Note that the function pickCard(x): any piece is not part of the overload list, 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/28/6.generic/" rel="prev" title="6.泛型">
+                6.泛型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -484,7 +549,7 @@ Note that the function pickCard(x): any piece is not part of the overload list, 
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

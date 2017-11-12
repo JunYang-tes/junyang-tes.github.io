@@ -260,6 +260,226 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/28/6.generic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qianba">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/28/6.generic/" itemprop="url">6.泛型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-28T00:00:00+08:00">
+                2017-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/编程语言/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/编程语言/TypeScript/" itemprop="url" rel="index">
+                    <span itemprop="name">TypeScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>软件工程活动中的一个主要方面是构建组件，这些组件不仅仅是有定义好的API，也要是可复用的。那些对于今天的数据是可用的，对于将来的数据也是可用的组件，将在构建大型软件系统时给你最大的灵活性。<br>在C#或Java这样的语言中，一个主要的功能就是用<code>泛型</code>来创建可复用的组件。<code>泛型</code>表示这些组件可用在许多不同的数据类型上，尔不是单一的数据类型。这就允许用户在这些组件里面使用自己的数据类型。</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>让我们写一个泛型版的<code>Hello World</code>: ID 函数。ID函数指的是一种你给它什么它就返回给你什么的函数，就像<code>echo</code>命令一样。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>(<span class="params">arg: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>或者，我们可以使用<code>any</code>类型:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>(<span class="params">arg: <span class="built_in">any</span></span>): <span class="title">any</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里实际上该用泛型，但是用了<code>any</code>,这会导致函数返回<code>any</code> 类型而丢失掉了类型信息。例如，传入了一个<code>number</code>类型，对于返回的类型却只知道它是<code>any</code>(注:从而失去了类型检查和进一步的类型推导)。</p>
+<p>所以，我们需要一种捕获类型的方法，然后我们可用这种方法了标示返回类型。在这里，我们使用<code>类型变量</code>——一种特殊的变量为类型而生而不是为值而生。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg:T</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> arg</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在我们给Id函数加入了类型变量<code>T</code>。这个<code>T</code>让我们可以捕获用户提供的类型(例如<code>number</code>)，所以我们就可以使用这个类型。在这里，我们把<code>T</code>用做返回值类型。<br><!--
+ On inspection, we can now see the same type is used for the argument and the return type. This allows us to traffic that type information in one side of the function and out the other.
+ --></p>
+<p> 我们说这个版本的id函数是个泛型函数，应为它可以用在很多类型上。和用<code>any</code>不同，它和<code>number</code>类型的哪个id函数一样是精准的(如，不会丢失类型信息)。</p>
+<p> 一旦我们写好了泛型函数，我们有两种调用它的方式。第一种是传递所有的参数给它，包括类型参数:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> output = identity&lt;<span class="built_in">string</span>&gt;(<span class="string">"myOutput"</span>)</div></pre></td></tr></table></figure>
+<p>这里，我们明确的指定了T为<code>string</code>，其作为调用函数的一个类型参数，需用用尖括号括起来而不是圆括号。<br>第二种方式更为通用，即使用<code>类型推断</code>，即我们让编译器根据我们传入的类型自行设置<code>T</code>的值。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> output = identity(<span class="string">"myString"</span>)</div></pre></td></tr></table></figure></p>
+<p>注意，我们没有用尖括号来明确指明类型参数，编译器根据<code>&quot;myString&quot;</code>来决定<code>T</code>的值。尽管类型参数的自动推断可以使代码更短，可读性更强，但是有些复杂的情况下编译器不能推断出泛型的类型，这时就需要你明确指定泛型的类型。</p>
+<h1 id="使用泛型类型变量"><a href="#使用泛型类型变量" class="headerlink" title="使用泛型类型变量"></a>使用泛型类型变量</h1><p>当你使用泛型时你会注意到当你创建像<code>identity</code>这样的泛型函数的时候，编译器会确保你在函数体内正确的使用了泛型。即，你实际应该把看做是所有类型。<br>如果我们想在函数体内把<code>arg</code>的<code>length</code>输出出来，会发生什么呢? 我们可能会这样写:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg:T</span>):<span class="title">T</span></span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(arg.length);</div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果我们这样做，编译器会报告一个错误，即我们使用了<code>arg</code>的<code>length</code>成员，但是我们没说过<code>arg</code>有这样一个成员。上面说过，你应该把T看成是所有类型，所以可能传进来的<code>arg</code>是一个数字，那么它是没有<code>length</code>属性的。</p>
+<p>这里我们实际上是希望这个函数接受<code>T</code>数组而不是T。如果<code>arg</code>是<code>T</code>的数组，那么就可以访问<code>.length</code>属性了。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T[]</span>): <span class="title">T</span>[] </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(arg.length);  <span class="comment">// Array has a .length, so no more error</span></div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现在你可以把这个函数解读为:一个拥有类型参数<code>T</code>以及函数参数<code>arg</code>—— 为数组T类型 ——并返回<code>T</code>数组类型的泛型函数。如果我们传入一个数字数组，我们会得到一个返回的数字数组，那么<code>T</code>为<code>number</code>。<!-- This allows us to use our generic type variable `T` as part of the types we're working with,rather than the whole type,giving us greater flexibility --><br>这让我们可以把泛型类型<code>T</code>作为所有我们用到的类型的一个部分，而不是所有类型。这样给我们更多的灵活性。<br>对上面的例子我们也可使用下面的形式:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: <span class="built_in">Array</span>&lt;T&gt;</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(arg.length);  <span class="comment">// Array has a .length, so no more error</span></div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你也许很熟悉这种写法，在下节中，我们将会讨论如何创建类似于<code>Array&lt;T&gt;</code>这样的泛型。</p>
+<h1 id="泛形类型"><a href="#泛形类型" class="headerlink" title="泛形类型"></a>泛形类型</h1><p>在前面几个小节中我们创建了一个泛型函数,它可又接受一些类型，在这节中我们将探索函数自身的类型以及如何创建泛型接口。<br>泛型函数的类型和非泛型函数的类型是类似的，需把泛型参数写在最前面。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> myIdentity: &lt;T&gt;<span class="function">(<span class="params">arg: T</span>) =&gt;</span> T = identity;</div></pre></td></tr></table></figure></p>
+<p>在类型中，我们也可以使用不同的泛型参数名，只要泛型参数的数量和用的位置是对的就可以。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> myIdentity: &lt;U&gt;<span class="function">(<span class="params">arg: U</span>) =&gt;</span> U = identity;</div></pre></td></tr></table></figure></p>
+<p>我们也可用对象字面量的方式来表示泛型函数得类型:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> myIdentity: &#123;&lt;T&gt;(arg: T): T&#125; = identity;</div></pre></td></tr></table></figure></p>
+<p>我们可以把这个例子写成一个接口。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> GenericIdentityFn &#123;</div><div class="line">    &lt;T&gt;(arg: T): T;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> myIdentity: GenericIdentityFn = identity;</div></pre></td></tr></table></figure></p>
+<p>或者，我们可以把泛型参数做为整个接口得泛型参数。这样，该接口的所有成员都可以使用该泛型参数。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> GenericIdentityFn&lt;T&gt; &#123;</div><div class="line">    (arg: T): T;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> myIdentity: GenericIdentityFn&lt;<span class="built_in">number</span>&gt; = identity;</div></pre></td></tr></table></figure></p>
+<p>注意，我们的例子变的有点不同了。<br>&lt;!–<br>. Instead of describing a generic function, we now have a non-generic function signature that is a part of a generic type. When we use GenericIdentityFn, we now will also need to specify the corresponding type argument (here: number), effectively locking in what the underlying call signature will use. Understanding when to put the type parameter directly on the call signature and when to put it on the interface itself will be helpful in describing what aspects of a type are generic.</p>
+<p>In addition to generic interfaces, we can also create generic classes. Note that it is not possible to create generic enums and namespaces.<br>–&gt;</p>
+<h1 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h1><p>泛型类和浮现接口有类似的结构。泛型类在类名后面有一个泛型参数表。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> GenericNumber&lt;T&gt; &#123;</div><div class="line">    zeroValue: T;</div><div class="line">    add: <span class="function">(<span class="params">x: T, y: T</span>) =&gt;</span> T;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> myGenericNumber = <span class="keyword">new</span> GenericNumber&lt;<span class="built_in">number</span>&gt;();</div><div class="line">myGenericNumber.zeroValue = <span class="number">0</span>;</div><div class="line">myGenericNumber.add = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; <span class="keyword">return</span> x + y; &#125;;</div></pre></td></tr></table></figure></p>
+<!--This is a pretty literal use of the GenericNumber class, but you may have noticed that nothing is restricting it to only use the number type. We could have instead used string or even more complex objects.-->
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> stringNumeric = <span class="keyword">new</span> GenericNumber&lt;<span class="built_in">string</span>&gt;();</div><div class="line">stringNumeric.zeroValue = <span class="string">""</span>;</div><div class="line">stringNumeric.add = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; <span class="keyword">return</span> x + y; &#125;;</div><div class="line"></div><div class="line">alert(stringNumeric.add(stringNumeric.zeroValue, <span class="string">"test"</span>));</div></pre></td></tr></table></figure>
+<p>就像使用接口一样，在类上使用泛型参数可让类中的的属性或方法可以使用这个泛型类型。</p>
+<p>在<a href="">类</a>这章描述过，类的类型有两种方面:类方面和实例方面。泛型类的泛型只在其实例中可用。也就是说，静态方法不能访问泛型类的浮现参数。</p>
+<h1 id="对泛型的约束"><a href="#对泛型的约束" class="headerlink" title="对泛型的约束"></a>对泛型的约束</h1><p>如果你还记得前面的例子，你也许希望你的泛型函数中的泛型类型只实用于一部分的类型。对于<code>loggingIdentity</code>这个例子中，我们希望能访问arg的length属性，但是编译器无法保证每个类型都有一个length属性，所以它会给出一个警告。<br><!--
+If you remember from an earlier example, you may sometimes want to write a generic function that works on a set of types where you have some knowledge about what capabilities that set of types will have. In our loggingIdentity example, we wanted to be able to access the .length property of arg, but the compiler could not prove that every type had a .length property, so it warns us that we can’t make this assumption.
+--><br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(arg.length);  <span class="comment">// Error: T doesn't have .length</span></div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<!--
+Instead of working with any and all types, we’d like to constrain this function to work with any and all types that also have the .length property. As long as the type has this member, we’ll allow it, but it’s required to have at least this member. To do so, we must list our requirement as a constraint on what T can be.
+-->
+<p>除了使用<code>any</code>类型或所有类型，我们希望这个函数使用那些带有<code>.length</code>属性的类型。只要某类型有<code>.length</code>属性，我们就允许它被传递到函数中，而且只是要求这个属性是必须要有的。为了做到这点，我们必须对<code>T</code>作一些限定。</p>
+<!--
+To do so, we’ll create an interface that describes our constraint. Here, we’ll create an interface that has a single .length property and then we’ll use this interface and the extends keyword to denote our constraint:
+-->
+<p>为了对<code>T</code>作限定，我们使用接口来描述我们的限定。这里我们创建一个拥有单一属性<code>length</code>的接口，并使用这个接口和<code>extends</code>关键字来说明我们的限制。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> Lengthwise &#123;</div><div class="line">    length: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">Lengthwise</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(arg.length);  <span class="comment">// Now we know it has a .length property, so no more error</span></div><div class="line">    <span class="keyword">return</span> arg;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为现在该泛型函数被限制了泛型的类型，那么不再可用任意类型作这个泛型了。<br><!--
+Because the generic function is now constrained, it will no longer work over any and all types:
+--><br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">loggingIdentity(<span class="number">3</span>);  <span class="comment">// Error, number doesn't have a .length property</span></div></pre></td></tr></table></figure></p>
+<p>除非我们传递一个有<code>length</code>属性的东西给它。<br><!--
+Instead, we need to pass in values whose type has all the required properties:
+--><br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">loggingIdentity(&#123;length: <span class="number">10</span>, value: <span class="number">3</span>&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="在类型参数中使用限定"><a href="#在类型参数中使用限定" class="headerlink" title="在类型参数中使用限定"></a>在类型参数中使用限定</h2><!--
+You can declare a type parameter that is constrained by another type parameter. For example, here we’d like to get a property from an object given its name. We’d like to ensure that we’re not accidentally grabbing a property that does not exist on the obj, so we’ll place a constraint between the two types:
+-->
+<p>你可用一个类型参数来限定另一个类型参数。例如，我们想从一个给定的名字来访问一个对象的属性。我们希望能确保我们不会意外的访问了那些不存在的属性。所以我们在这两个泛型类型中应用一个限定。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProperty</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> obj[key];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> x = &#123; a: <span class="number">1</span>, b: <span class="number">2</span>, c: <span class="number">3</span>, d: <span class="number">4</span> &#125;;</div><div class="line"></div><div class="line">getProperty(x, <span class="string">"a"</span>); <span class="comment">// okay</span></div><div class="line">getProperty(x, <span class="string">"m"</span>); <span class="comment">// error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.</span></div></pre></td></tr></table></figure></p>
+<h2 id="在泛型中使用类类型"><a href="#在泛型中使用类类型" class="headerlink" title="在泛型中使用类类型"></a>在泛型中使用类类型</h2><p>When creating factories in TypeScript using generics, it is necessary to refer to class types by their constructor functions. For example,<br>当我们在工厂函数中使用泛型的时候，在其构造函数中引用类类型是有必要的。例如：<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function create&lt;T&gt;(c: &#123;new(): T; &#125;): T &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> c();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<!--
+A more advanced example uses the prototype property to infer and constrain relationships between the constructor function and the instance side of class types.
+-->
+<p>下面的例子演示了使用原型来引用和限定构造函数和类实例之间的关系。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> BeeKeeper &#123;</div><div class="line">    hasMask: <span class="built_in">boolean</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> ZooKeeper &#123;</div><div class="line">    nametag: <span class="built_in">string</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Animal &#123;</div><div class="line">    numLegs: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Bee <span class="keyword">extends</span> Animal &#123;</div><div class="line">    keeper: BeeKeeper;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Lion <span class="keyword">extends</span> Animal &#123;</div><div class="line">    keeper: ZooKeeper;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function createInstance&lt;A extends Animal&gt;(c: new () =&gt; A): A &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> c();</div><div class="line">&#125;</div><div class="line"></div><div class="line">createInstance(Lion).keeper.nametag;  <span class="comment">// typechecks!</span></div><div class="line">createInstance(Bee).keeper.hasMask;   <span class="comment">// typechecks!</span></div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/28/5.function/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -279,7 +499,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/28/5.function/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/10/28/5.function/" itemprop="url">5.函数</a></h1>
         
 
         <div class="post-meta">
@@ -291,7 +511,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-28T21:07:35+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-28T00:00:00+08:00">
                 2017-10-28
               </time>
             
@@ -301,6 +521,50 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/编程语言/" itemprop="url" rel="index">
+                    <span itemprop="name">编程语言</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/编程语言/TypeScript/" itemprop="url" rel="index">
+                    <span itemprop="name">TypeScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -345,19 +609,27 @@
 <p>在JavaScript中，每个参数都是可选的，用户可能会省略其中的一些参数，如果参数被省略了那么该参数就是<code>undefined</code>。在TypeScript中可以通过在参数名末尾添加<code>?</code>来使用这一功能。比如，如果第二个参数是可选的:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, lastName?: <span class="built_in">string</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (lastName)</div><div class="line">        <span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> firstName;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> result1 = buildName(<span class="string">"Bob"</span>);                  <span class="comment">// works correctly now</span></div><div class="line"><span class="keyword">let</span> result2 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>, <span class="string">"Sr."</span>);  <span class="comment">// error, too many parameters</span></div><div class="line"><span class="keyword">let</span> result3 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>);         <span class="comment">// ah, just right</span></div></pre></td></tr></table></figure></p>
 <p>可选参数必须要在必选参数后面声明。<br>在TypeScript中，我们也可以参数设置一个预设值，如果调用者没有提拱该参数(或提拱了一个<code>undefined</code>)，那么该参数的值就是预设值。这被叫做<code>默认参数</code>.<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function buildName(firstName: string, lastName = "Smith") &#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> result1 = buildName(<span class="string">"Bob"</span>);                  <span class="comment">// works correctly now, returns "Bob Smith"</span></div><div class="line"><span class="keyword">let</span> result2 = buildName(<span class="string">"Bob"</span>, <span class="literal">undefined</span>);       <span class="comment">// still works, also returns "Bob Smith"</span></div><div class="line"><span class="keyword">let</span> result3 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>, <span class="string">"Sr."</span>);  <span class="comment">// error, too many parameters</span></div><div class="line"><span class="keyword">let</span> result4 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>);         <span class="comment">// ah, just right</span></div></pre></td></tr></table></figure></p>
 <p>默认参数被视作是可选参数，和可选参数一样，我们可以在调用函数的时候忽略它们。可选参数和默认参数的类型(注:指的是函数的类型)是共用的。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, lastName?: <span class="built_in">string</span></span>) </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>和<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function buildName(firstName: string, lastName = "Smith") &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>和</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function buildName(firstName: string, lastName = "Smith") &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>的类型都是<code>(firstName:string,lastName?:string)=&gt;string</code>. <code>lastName</code>的默认在在类中是没有体现的，只留下该参数是可选的这一事实。<br>和原生可选参数不同，默认参数不需要声明在必须参数后面。<!--此时类型是什么样的?--> 。如果一个默认参数只必选参数之前，那我们需要明确的传递一个<code>undefined</code>给它。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function buildName(firstName = "Will", lastName: string) &#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + lastName;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> result1 = buildName(<span class="string">"Bob"</span>);                  <span class="comment">// error, too few parameters</span></div><div class="line"><span class="keyword">let</span> result2 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>, <span class="string">"Sr."</span>);  <span class="comment">// error, too many parameters</span></div><div class="line"><span class="keyword">let</span> result3 = buildName(<span class="string">"Bob"</span>, <span class="string">"Adams"</span>);         <span class="comment">// okay and returns "Bob Adams"</span></div><div class="line"><span class="keyword">let</span> result4 = buildName(<span class="literal">undefined</span>, <span class="string">"Adams"</span>);     <span class="comment">// okay and returns "Will Adams"</span></div></pre></td></tr></table></figure></p>
 <h2 id="Rest-参数"><a href="#Rest-参数" class="headerlink" title="Rest 参数"></a>Rest 参数</h2><p>必选，可选，默认参数有一个共同点:它们谈及的都是一个参数的情况。有时候你可能会想把多个参数”打包起来”，或者你压根就不知道函数实际上会接受到多少个参数。在JavaScript中，你可以使用<code>arguments</code>(注:JavaScript的魔术变量)来处理这种情况。<br>在TypeScript中，你可以把所有的参数收集到同一个变量中:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, ...restOfName: <span class="built_in">string</span>[]</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + restOfName.join(<span class="string">" "</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> employeeName = buildName(<span class="string">"Joseph"</span>, <span class="string">"Samuel"</span>, <span class="string">"Lucas"</span>, <span class="string">"MacKinzie"</span>);</div></pre></td></tr></table></figure></p>
-<p>(注:ES6也有这种语法)<br>Rest参数被视为一组可选参数，你可以传递任意多的参数都Rest参数。编译器会创建一个参数数组，其名嘴在<code>...</code>后指定。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, ...restOfName: <span class="built_in">string</span>[]</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + restOfName.join(<span class="string">" "</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> buildNameFun: <span class="function">(<span class="params">fname: <span class="built_in">string</span>, ...rest: <span class="built_in">string</span>[]</span>) =&gt;</span> <span class="built_in">string</span> = buildName;</div></pre></td></tr></table></figure></p>
+<p>(注:ES6也有这种语法)<br>Rest参数被视为一组可选参数，你可以传递任意多的参数都Rest参数。编译器会创建一个参数数组，其名字在<code>...</code>后指定。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildName</span>(<span class="params">firstName: <span class="built_in">string</span>, ...restOfName: <span class="built_in">string</span>[]</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> firstName + <span class="string">" "</span> + restOfName.join(<span class="string">" "</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> buildNameFun: <span class="function">(<span class="params">fname: <span class="built_in">string</span>, ...rest: <span class="built_in">string</span>[]</span>) =&gt;</span> <span class="built_in">string</span> = buildName;</div></pre></td></tr></table></figure></p>
 <h1 id="this"><a href="#this" class="headerlink" title="this"></a>this</h1><!--a rite of passage,必由之路-->
 <p>学习如何使用<code>this</code>是学习JavaScript中的一条必经之路。TypeScript是JavaScript的超集，所以TypeScript的程序员也需要学习如何使用<code>this</code>以及指出什么时候this被错误的使用了。<br>幸运的是，TypeScript使用了一些技术来捕获<code>this</code>不正确的使用。如果你需要学习在JavaScript中如何使用<code>this</code>,请先阅读<a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/" target="_blank" rel="external">《理解JavaScript函数和this》</a>，该文介绍了<code>this</code>内部的东西，我们这里只介绍一些基础。</p>
-<h2 id="this-和箭头函数"><a href="#this-和箭头函数" class="headerlink" title="this 和箭头函数"></a>this 和箭头函数</h2><p>在JavaScript中，当函数被调用的时候其中的<code>this</code>是可用的。在是一个强大的、灵活的特性，但其代价是总是需要知道函数正在执行的上下文是什么。这是十分具有迷惑性的，特别是在返回一个函数或以一个函数为参数的时候。<br>例如:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> deck = &#123;</div><div class="line">    suits: [<span class="string">"hearts"</span>, <span class="string">"spades"</span>, <span class="string">"clubs"</span>, <span class="string">"diamonds"</span>],</div><div class="line">    cards: <span class="built_in">Array</span>(<span class="number">52</span>),</div><div class="line">    createCardPicker: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">let</span> pickedCard = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">52</span>);</div><div class="line">            <span class="keyword">let</span> pickedSuit = <span class="built_in">Math</span>.floor(pickedCard / <span class="number">13</span>);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> &#123;<span class="attr">suit</span>: <span class="keyword">this</span>.suits[pickedSuit], <span class="attr">card</span>: pickedCard % <span class="number">13</span>&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cardPicker = deck.createCardPicker();</div><div class="line"><span class="keyword">let</span> pickedCard = cardPicker();</div><div class="line"></div><div class="line">alert(<span class="string">"card: "</span> + pickedCard.card + <span class="string">" of "</span> + pickedCard.suit);</div></pre></td></tr></table></figure></p>
+<h2 id="this-和箭头函数"><a href="#this-和箭头函数" class="headerlink" title="this 和箭头函数"></a>this 和箭头函数</h2><p>在JavaScript中，当函数被调用的时候其中的<code>this</code>是可用的。这是一个强大的、灵活的特性，但其代价是总是需要知道函数正在执行的上下文是什么。这是十分具有迷惑性的，特别是在返回一个函数或以一个函数为参数的时候。<br>例如:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> deck = &#123;</div><div class="line">    suits: [<span class="string">"hearts"</span>, <span class="string">"spades"</span>, <span class="string">"clubs"</span>, <span class="string">"diamonds"</span>],</div><div class="line">    cards: <span class="built_in">Array</span>(<span class="number">52</span>),</div><div class="line">    createCardPicker: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">let</span> pickedCard = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">52</span>);</div><div class="line">            <span class="keyword">let</span> pickedSuit = <span class="built_in">Math</span>.floor(pickedCard / <span class="number">13</span>);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> &#123;<span class="attr">suit</span>: <span class="keyword">this</span>.suits[pickedSuit], <span class="attr">card</span>: pickedCard % <span class="number">13</span>&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cardPicker = deck.createCardPicker();</div><div class="line"><span class="keyword">let</span> pickedCard = cardPicker();</div><div class="line"></div><div class="line">alert(<span class="string">"card: "</span> + pickedCard.card + <span class="string">" of "</span> + pickedCard.suit);</div></pre></td></tr></table></figure></p>
 <p>注意，<code>createCardPicker</code>将返回一个函数。如果我们运行这个例子，我们会得到一个错误，而不是期望中的警告框。这是因为，createCardPicker返回的函数中的<code>this</code>是<code>window</code>而非<code>deck</code>对象。这是因为我们以<code>顶层非方法的语法</code>的方式在调用<code>cardPicker</code>(原注:在严格模式下，this会是undefined)。<br>我们可以通过确保function 绑定到正确的<code>this</code>的方式修正这个问题。这种情况下，无论这个函数多晚被调用，它总可以访问到deck对象。为了做到这点，我们可使用ES6的箭头函数，箭头函数会在函数被创建的时候捕获<code>this</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> deck = &#123;</div><div class="line">    suits: [<span class="string">"hearts"</span>, <span class="string">"spades"</span>, <span class="string">"clubs"</span>, <span class="string">"diamonds"</span>],</div><div class="line">    cards: <span class="built_in">Array</span>(<span class="number">52</span>),</div><div class="line">    createCardPicker: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// <span class="doctag">NOTE:</span> the line below is now an arrow function, allowing us to capture 'this' right here</span></div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> pickedCard = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">52</span>);</div><div class="line">            <span class="keyword">let</span> pickedSuit = <span class="built_in">Math</span>.floor(pickedCard / <span class="number">13</span>);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> &#123;<span class="attr">suit</span>: <span class="keyword">this</span>.suits[pickedSuit], <span class="attr">card</span>: pickedCard % <span class="number">13</span>&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cardPicker = deck.createCardPicker();</div><div class="line"><span class="keyword">let</span> pickedCard = cardPicker();</div><div class="line"></div><div class="line">alert(<span class="string">"card: "</span> + pickedCard.card + <span class="string">" of "</span> + pickedCard.suit);</div></pre></td></tr></table></figure></p>
 <p>更进一步，如果你使用了<code>--noImplicitThis</code>选项，TypeScript会在你错误的使用this的时候给出一个警告。它会指出<code>this.suits[pickedSuit]</code>中的<code>this</code>是<code>any</code>类型的。</p>
 <h2 id="this-参数"><a href="#this-参数" class="headerlink" title="this 参数"></a>this 参数</h2><p>不幸的是，<code>this.suits[pickedSuit]</code>的类型还是是<code>any</code>。这是因为<code>this</code>是来自于函数表达式中的对象字面量。你可以通过明确的指定一个<code>this</code>参数来修正这个问题。<code>this</code>参数是位于参数表中第一个参数的假参数。<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"><span class="keyword">this</span>: <span class="built_in">void</span></span>) </span>&#123;</div><div class="line">    <span class="comment">// make sure `this` is unusable in this standalone function</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>现在添加两个接口来使类型更加清晰和更易复用:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> Card &#123;</div><div class="line">    suit: <span class="built_in">string</span>;</div><div class="line">    card: <span class="built_in">number</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">interface</span> Deck &#123;</div><div class="line">    suits: <span class="built_in">string</span>[];</div><div class="line">    cards: <span class="built_in">number</span>[];</div><div class="line">    createCardPicker(<span class="keyword">this</span>: Deck): <span class="function"><span class="params">()</span> =&gt;</span> Card;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> deck: Deck = &#123;</div><div class="line">    suits: [<span class="string">"hearts"</span>, <span class="string">"spades"</span>, <span class="string">"clubs"</span>, <span class="string">"diamonds"</span>],</div><div class="line">    cards: <span class="built_in">Array</span>(<span class="number">52</span>),</div><div class="line">    <span class="comment">// <span class="doctag">NOTE:</span> The function now explicitly specifies that its callee must be of type Deck</span></div><div class="line">    createCardPicker: <span class="function"><span class="keyword">function</span>(<span class="params"><span class="keyword">this</span>: Deck</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> pickedCard = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">52</span>);</div><div class="line">            <span class="keyword">let</span> pickedSuit = <span class="built_in">Math</span>.floor(pickedCard / <span class="number">13</span>);</div><div class="line"></div><div class="line">            <span class="keyword">return</span> &#123;suit: <span class="keyword">this</span>.suits[pickedSuit], card: pickedCard % <span class="number">13</span>&#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> cardPicker = deck.createCardPicker();</div><div class="line"><span class="keyword">let</span> pickedCard = cardPicker();</div><div class="line"></div><div class="line">alert(<span class="string">"card: "</span> + pickedCard.card + <span class="string">" of "</span> + pickedCard.suit);</div></pre></td></tr></table></figure></p>
 <p>现在TypeScript知道<code>createCardPicker</code>需要在<code>Deck</code>对象上被调用，这表明<code>this</code>的<code>Deck</code>类型的而不是<code>any</code>，所以<code>--noImplicitThis</code>不会导致问题。</p>
-<h2 id="回调中的this参数。"><a href="#回调中的this参数。" class="headerlink" title="回调中的this参数。"></a>回调中的<code>this</code>参数。</h2><p>当你传递一个函数到一个库中，你也会在回调中遇到<code>this</code>的问题。因为这些库会将你的回调作为一个普通函数来调用，<code>this</code>就会是<code>undefined</code></p>
+<h2 id="回调中的this参数。"><a href="#回调中的this参数。" class="headerlink" title="回调中的this参数。"></a>回调中的<code>this</code>参数。</h2><!--
+You can also run into errors with this in callbacks, when you pass functions to a library that will later call them. Because the library that calls your callback will call it like a normal function, this will be undefined. With some work you can use this parameters to prevent errors with callbacks too. First, the library author needs to annotate the callback type with this:
+-->
+<p>当你传递一个函数到一个库中，你也会在回调中遇到<code>this</code>的问题。因为这些库会将你的回调作为一个普通函数来调用，<code>this</code>就会是<code>undefined</code>. 你可用<code>this</code>参数来防止一些错误。首先，库的作者需要这样表示回调:<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">interface</span> UIElement &#123;</div><div class="line">    addClickListener(onclick: <span class="function">(<span class="params"><span class="keyword">this</span>: <span class="built_in">void</span>, e: Event</span>) =&gt;</span> <span class="built_in">void</span>): <span class="built_in">void</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>this: void means that addClickListener expects onclick to be a function that does not require a this type. Second, annotate your calling code with this:</p>
+<p>class Handler {<br>    info: string;<br>    onClickBad(this: Handler, e: Event) {<br>        // oops, used this here. using this callback would crash at runtime<br>        this.info = e.message;<br>    }<br>}<br>let h = new Handler();<br>uiElement.addClickListener(h.onClickBad); // error!<br>With this annotated, you make it explicit that onClickBad must be called on an instance of Handler. Then TypeScript will detect that addClickListener requires a function that has this: void. To fix the error, change the type of this:</p>
+<p>class Handler {<br>    info: string;<br>    onClickGood(this: void, e: Event) {<br>        // can’t use this here because it’s of type void!<br>        console.log(‘clicked!’);<br>    }<br>}<br>let h = new Handler();<br>uiElement.addClickListener(h.onClickGood);<br>Because onClickGood specifies its this type as void, it is legal to pass to addClickListener. Of course, this also means that it can’t use this.info. If you want both then you’ll have to use an arrow function:</p>
+<p>class Handler {<br>    info: string;<br>    onClickGood = (e: Event) =&gt; { this.info = e.message }<br>}<br>This works because arrow functions don’t capture this, so you can always pass them to something that expects this: void. The downside is that one arrow function is created per object of type Handler. Methods, on the other hand, are only created once and attached to Handler’s prototype. They are shared between all objects of type Handler.</p>
 <h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><!--JavaScript is inherently a very dynamic language. It’s not uncommon for a single JavaScript function to return different types of objects based on the shape of the arguments passed in.
 -->
 <p>JavaScript是一种非常“动态”的语言。JavaScript中函数根据传入的参数返回不同的对象是很常见的。</p>
@@ -374,9 +646,11 @@ With this change, the overloads now give us type-checked calls to the pickCard f
 -->
 <p>现在这些重载信息可用于<code>pickCard</code>调用的时候做类型检察。<br><!--
 In order for the compiler to pick the correct typecheck, it follows a similar process to the underlying JavaScript. It looks at the overload list, and proceeding with the first overload attempts to call the function with the provided parameters. If it finds a match, it picks this overload as the correct overload. For this reason, its customary to order overloads from most specific to least specific.
---><br><!--
+--></p>
+<!--
 Note that the function pickCard(x): any piece is not part of the overload list, so it only has two overloads: one that takes an object and one that takes a number. Calling pickCard with any other parameter types would cause an error.
---><br>注意<code>pickCard</code>函数只有两个重载，一个是以对象为参数的另一个是以数字为参数的。以其它类型的参数来调用将得到一个编译时错误。</p>
+-->
+<p>注意<code>pickCard</code>函数只有两个重载，一个是以对象为参数的另一个是以数字为参数的。以其它类型的参数来调用将得到一个编译时错误。</p>
 
           
         
@@ -1319,7 +1593,7 @@ Within the Control class it is possible to access the state private member throu
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
